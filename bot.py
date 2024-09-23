@@ -15,7 +15,7 @@ def send_welcome(message):
     
     # Provide a button to visit GitHub website
     markup = telebot.types.InlineKeyboardMarkup()
-    button = telebot.types.InlineKeyboardButton("Visit GitHub Website", url="https://your-github-username.github.io/your-repo")
+    button = telebot.types.InlineKeyboardButton("Visit GitHub Website", url="https://turisteraryan.github.io/")
     markup.add(button)
     
     bot.send_message(message.chat.id, "Click the button below to visit the website.", reply_markup=markup)
