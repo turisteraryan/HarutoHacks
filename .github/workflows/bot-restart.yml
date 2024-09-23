@@ -1,15 +1,13 @@
-# .github/workflows/bot-restart.yml
 name: Telegram Bot Auto Restart
 
 on:
   schedule:
-    # Run the workflow every 6 hours
-    - cron: "0 */6 * * *"
+    - cron: "0 */6 * * *"  # Runs every 6 hours
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
